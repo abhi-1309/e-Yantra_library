@@ -1,0 +1,169 @@
+body {
+    background-color: lightblue;
+}
+
+h2 {
+    color: red;
+    margin-left: 120px;
+}
+.e2{
+	background-color: red;
+	font-size: 200px;
+	color: red;
+}
+element.style {
+}
+.bs-example>.btn, .bs-example>.btn-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.btn-eyrc1 {
+    color: #fff;
+    background-color: #009972;
+    border-color: #4cae4c;
+}
+.btn-eyrc2 {
+    color: #fff;
+    background-color: #4c4d00;
+    border-color: #4cae4c;
+}
+.btn-eyrc3 {
+    color: #fff;
+    background-color: #00994c;
+    border-color: #4cae4c;
+}  
+.btn-eyrc4 {
+    color: #fff;
+    background-color: #ff794d;
+    border-color: #4cae4c;
+}
+.btn-eyrc5 {
+    color: #fff;
+    background-color: #ff4d79;
+    border-color: #4cae4c;
+}
+.btn-eyrc6 {
+    color: #fff;
+    background-color: #ca8294;
+    border-color: #4cae4c;
+}
+.btn-eyrc7 {
+    color: #fff;
+    background-color: #ccbfff
+    ;
+    border-color: #4cae4c;
+}
+.btn-eyrc8 {
+    color: #fff;
+    background-color: #cceeaa;
+    border-color: #4cae4c;
+}
+.btn-eyrc9 {
+    color: #fff;
+    background-color: #5cc5ef;
+    border-color: #4cae4c;
+}
+.btn-eyrc10 {
+    color: #fff;
+    background-color: #5cefd0;
+    border-color: #4cae4c;
+}  
+.btn-eyrc11 {
+    color: #fff;
+    background-color: #5c7cef;
+    border-color: #4cae4c;
+}  
+.btn-eyrc12 {
+    color: #fff;
+    background-color: #e8888c;
+    border-color: #4cae4c;
+}  
+.btn-eyrc13 {
+    color: #fff;
+    background-color: #2c8a7e;
+    border-color: #4cae4c;
+}  
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+button, input, select, textarea {
+    font-family: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+ }
+* {
+	box-sizing: border-box;
+}
+user agent stylesheetinput[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+  
+}
+user agent stylesheetinput[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    align-items: flex-start;
+ }
+user agent stylesheetinput, textarea, keygen, select, button {
+	text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+}
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+button {
+    -webkit-appearance: button;
+}
+/*Inherited from body*/
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+/*Inherited from html*/
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+/*Pseudo ::before element*/
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*Pseudo ::after element*/
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
