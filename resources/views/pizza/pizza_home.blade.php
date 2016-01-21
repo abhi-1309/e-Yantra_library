@@ -5,98 +5,8 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Orbitron|Lobster">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
-	<style>
-	.clock{
-		margin-left: 0px auto;
-		color: #FFF;!important
-		/* max-width: 300px; */
-	}
-	.flip-clock-wrapper{
-		max-width: 300px !important;
-		height: auto !important;
-		margin: 0 auto!important;
-		display: block;
-	}
-	.flip-clock-label{
-		color: #FFF !important;
-	}
-	.clock-header {
-		font-family: Orbitron, sans-serif;
-		font-size: 40px;
-		padding-bottom: 10px!important;
-		text-align: center;
-		display: inline-block;
-	}
-	/*input{
-		text-align:center;
-	}*/
-	/*.progress {
-		width: 400px;
-	}
-	.progress header span {
-		color: #666;
-		float: right;
-	}
-	.progress .bar {
-		position: relative;
-		background-color: #ccc;
-	}
-	.progress .bar .percent {
-		color: white;
-		background-color: #0c0;
-		width: 70%;
-	}
-	.progress .bar .ref {
-		position: absolute;
-		left: 80%;
-		top: 0;
-		width: 1px;
-		height: 100%;
-		background-color: black;
-	}
-	.progress .bar .ref:before {
-		content: attr(data-ref);
-		position: absolute;
-		width: 100px;
-		left: -50px;
-		top: 100%;
-		color: #888;
-		text-align: center;
-	}*/
-	.clockTimer{
-		display: block;
-    	margin-left: 10%;
-	}
-	.clockTimer1{
-		display: block;
-    	margin-right: .5%;
-	}
-	.clockTimer2{
-		display: block;
-    	margin-left: 20%;
-	}
-	.popover-example .popover {
-		position: relative;
-		display: block;
-		margin: 20px;
-	}
-	.progress-bar-1 {
-      background-color: #DC143C;
-	}
-	.progress-bar-2 {
-      background-color: #C71585;
-	}
-	.progress-bar-3 {
-      background-color: #00BFFF;
-	}
-	.progress-bar-4 {
-      background-color: #ADFF2F;
-	}
-	.progress-bar-5 {
-      background-color: #FF4500;
-	}
-	</style>
-</head>
+	<link rel="stylesheet" href="css/pizza.css">
+	</head>
 <body ng-app="" style="border-style: solid;border-color: black;">
 	<div class="well">
 		<div class = "row text-center">
@@ -156,48 +66,47 @@
 
 	<div ng-init = "totalPoints = 0">
 		<div class="panel-body">
-			<table class="table">
+			<table class="table ">
 					<tr class="text-danger" style="font-family: fantasy; padding-bottom:0px;">
 						<th>
-							<h3>H.no.</h3>                				
+							<h3>H.No.</h3>
 						</th>
 						<th>
-							<h3>pizza size</h3>
+							<h3>Pizza Size</h3>
 						</th>
 						<th>
 							<h3>Order Type</h3>
 						</th>
 						<th>
-							<h3>ORDER TIME</h3>
+							<h3>Order Time</h3>
 						</th>
 						<th>
-							<h3>DEAD LINE</h3>
+							<h3>Dead Line</h3>
 						</th>
 						<th>
-							<h3>ORDER TIME</br>WINDOW</h3>
+							<h3>Order Time</br>Window</h3>
 						</th>
 						<th>
-							<h3 style="text-align: center;">PIZZA DEL. TIME</h3>
+							<h3 style="text-align: center;">Pizza Del. Time</h3>
 						</th>
 						<th>
-							<h3>DEL. STATUS</h3>
+							<h3>Del. Status</h3>
 						</th>
 						<th>
-							<h3>POINTS</h3>
+							<h3>Points</h3>
 						</th>
 					</tr>
-					
-				
+
+
 				@for($i = 1; $i < 6; $i++)
 					{{PizzaType<?php echo $i;?>}}
-								
 	 	    		<tr>
 						<div ng-init="OrderTime<?php echo $i;?> = 0">
 							<td class = "text-danger">
 								<input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="text" style="width: 40px; height: 25px" min="1" max="9" maxlength="1">&nbsp;&nbsp;&nbsp;
 							</td>
 								<!-- <input id="PizzaType<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1">&nbsp;&nbsp;&nbsp; -->
-							<td>	
+							<td>
 								<button id="bSmall<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = S" onClick="Small(<?php echo $i;?>)" type="button" class="label label-info">S
 								</button>
 
@@ -209,7 +118,7 @@
 							</td>
 							<td>
 								<!-- <input id="OrderType<?php echo $i;?>" ng-model="OrderType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1"> -->
-								<button id="RegularOrder<?php echo $i;?>" onClick="RegularOrder(<?php echo $i;?>)" type="button" class="label label-primary">Reg Or.</button>
+								<button id="RegularOrder<?php echo $i;?>" onClick="RegularOrder(<?php echo $i;?>)" type="button" class="label label-1">Reg Or.</button>
 								<button id="PreOrder<?php echo $i;?>" onClick="PreOrder(<?php echo $i;?>)" type="button" class="label label-warning">Pre Or.</button>
 							</td>
 							<td>
@@ -248,7 +157,6 @@
 							</td>
 						</div>
 					</tr>
-	 	    	
 	 	    	@endfor
 	 	    	<div id = "totalPoints" style="visibility: hidden">
 	 	    		@{{points1 + points2 + points3 + points4 + points5}}
@@ -380,7 +288,7 @@ function snapClock(i) {
 }
 
 function RegularOrder(i) {
-	document.getElementById("OrderTime"+i).style.backgroundColor = "#DDA0DD";
+	document.getElementById("OrderTime"+i).style.backgroundColor = "#2c8a7e";
 	$("#PreOrder"+i).hide();
 	audio.play();
 }

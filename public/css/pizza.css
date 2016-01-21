@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Orbitron|Lobster">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+	<style>
+	.clock{
+		margin-left: 0px auto;
+		color: #FFF;!important
+		/* max-width: 300px; */
+	}
+	.flip-clock-wrapper{
+		max-width: 300px !important;
+		height: auto !important;
+		margin: 0 auto!important;
+		display: block;
+	}
+	.flip-clock-label{
+		color: #FFF !important;
+	}
+	.clock-header {
+		font-family: Orbitron, sans-serif;
+		font-size: 40px;
+		padding-bottom: 10px!important;
+		text-align: center;
+		display: inline-block;
+	}
+	/*input{
+		text-align:center;
+	}*/
+	/*.progress {
+		width: 400px;
+	}
+	.progress header span {
+		color: #666;
+		float: right;
+	}
+	.progress .bar {
+		position: relative;
+		background-color: #ccc;
+	}
+	.progress .bar .percent {
+		color: white;
+		background-color: #0c0;
+		width: 70%;
+	}
+	.progress .bar .ref {
+		position: absolute;
+		left: 80%;
+		top: 0;
+		width: 1px;
+		height: 100%;
+		background-color: black;
+	}
+	.progress .bar .ref:before {
+		content: attr(data-ref);
+		position: absolute;
+		width: 100px;
+		left: -50px;
+		top: 100%;
+		color: #888;
+		text-align: center;
+	}*/
+	.clockTimer{
+		display: block;
+    	margin-left: 10%;
+	}
+	.clockTimer1{
+		display: block;
+    	margin-right: .5%;
+	}
+	.clockTimer2{
+		display: block;
+    	margin-left: 20%;
+	}
+	.popover-example .popover {
+		position: relative;
+		display: block;
+		margin: 20px;
+	}
+	.progress-bar-1 {
+      background-color: #DC143C;
+	}
+	.progress-bar-2 {
+      background-color: #C71585;
+	}
+	.progress-bar-3 {
+      background-color: #00BFFF;
+	}
+	.progress-bar-4 {
+      background-color: #ADFF2F;
+	}
+	.progress-bar-5 {
+      background-color: #FF4500;
+	}
+	.label-1 {
+		color: #fff;
+		background-color: #2c8a7e;
+		border-color: #2c8a7e;
+	}
