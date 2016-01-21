@@ -11,6 +11,7 @@ element.style {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 .btn-eyrc1 {
     color: #fff;
     background-color: #009972;
@@ -55,32 +56,32 @@ element.style {
 .btn-eyrc9 {
     color: #fff;
     background-color: #5cc5ef;
-    border-color: #4cae4c;
+    border-color: #5cc5ef;
 }
 .btn-eyrc10 {
     color: #fff;
     background-color: #5cefd0;
-    border-color: #4cae4c;
+    border-color: #5cefd0;
 }  
 .btn-eyrc11 {
     color: #fff;
     background-color: #5c7cef;
-    border-color: #4cae4c;
+    border-color: #5c7cef;
 }  
 .btn-eyrc12 {
     color: #fff;
     background-color: #e8888c;
-    border-color: #4cae4c;
+    border-color: #e8888c;
 }  
 .btn-eyrc13 {
     color: #fff;
     background-color: #2c8a7e;
-    border-color: #4cae4c;
+    border-color: #2c8a7e;
 }
 .btn-eyrc14 {
     color: #fff;
     background-color: #dd4c0d;
-    border-color: #4cae4c;
+    border-color: #dd4c0d;
 }    
 .btn {
     display: inline-block;
@@ -131,6 +132,4 @@ input, textarea, keygen, select, button {
 input, textarea, keygen, select, button, meter, progress {
     -webkit-writing-mode: horizontal-tb;
 }
-button {
-    -webkit-appearance: button;
-}
+
