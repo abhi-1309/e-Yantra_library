@@ -26,5 +26,9 @@ Route::match(array('GET'), '/library', array(
 	'as'			=>	'library',
 	'uses'			=>	'formcontroller@eyrclibrary'
 	));
+Route::match(array('GET'), '/pizza', array(
+	'as'			=>	'pizza',
+	'uses'			=>	'pizzaController@pizzahome'
+	));
 
 
