@@ -30,5 +30,10 @@ Route::match(array('GET'), '/pizza', array(
 	'as'			=>	'pizza',
 	'uses'			=>	'pizzaController@pizzahome'
 	));
+Route::match(array('GET'), '/pizzaDataSave', array(
+	'as'			=>	'pizzaDataSave',
+	'uses'			=>	'pizzaController@DataSave'
+	));
+
 
 

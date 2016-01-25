@@ -45,7 +45,7 @@
 				<div class="progress-bar progress-bar-info popover-example" role="progressbar" style="width:@{{OrderTime1/6}}%">
 				</div>
 				@for($i = 1; $i < 6; $i++)
-				<div class="progress-bar mypopover" role="progressbar" title="" data-content="OT {{OrderTime<?php echo $i;?>}}<br>PT {{PizzaType<?php echo $i;?>}}<br>OTy {{OrderType<?php echo $i;?>}}"
+				<div class="progress-bar mypopover" role="progressbar" title="" data-content="OT {{OrderTime<?php echo $i;?>}}"
 					data-html="true" data-placement="top" data-original-title="H.No. {{HomeNumber<?php echo $i;?>}}" style="width:0.5%">
 				</div>
 				<div class="progress-bar  progress-bar-<?php echo $i;?>" role="progressbar" style="width:{{(OrderTime<?php echo $i+1;?> - OrderTime<?php echo $i;?>)/6}}%;">
@@ -88,7 +88,7 @@
 	<div class = "row" style="background-color: #FF9C5F">
 		<div class="col-md-10 col-md-offset-1">
 			<table class="table ">
-					<tr class="text-danger" style="font-family: fantasy; padding-bottom:0px;">
+					<tr class="text-danger" style="background-color: #FF9331;">
 						<th>
 							<h3>H.No.</h3>
 						</th>
@@ -200,6 +200,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
 <script>
 var clock;
+var score;
 var audio = new Audio('http://scambuster.info/audio/time_up.wav');
 
 $(document).ready(function(){
@@ -221,7 +222,7 @@ $(document).ready(function(){
         }
     });
 
-	var score = $('.counter').FlipClock(00, {
+	score = $('.counter').FlipClock(00, {
 		clockFace: 'Counter',
 		minimumDigits: 3,
 		countdown: true
@@ -233,10 +234,6 @@ $(document).ready(function(){
 		audio.play();
 	})
 
-	$("#save").click(function(){
-		alert("Database is not connected");
-	})
-
 	// Managing the Switch Buttons
 	$("#onswitch").click(function(){
 		clock.setTime(clock.getTime().time);
@@ -246,7 +243,8 @@ $(document).ready(function(){
 			clearInterval(countup);
      		countup = setInterval(function() {
      			clock.increment();
-     			var ProgressedTime = clock.getTime().time/6 + '%';
+     			var time = clock.getTime().time;
+     			var ProgressedTime = time/6 + '%';
 	        	$('#incrementalProgressBar').width(ProgressedTime).text(time);
      		}, 1000);
     	});
@@ -362,7 +360,48 @@ function Large(i) {
 
 <script type="text/javascript">
 $(document).ready(function(){
-
+	$("#save").click(function(){
+		//alert("Database is not connected");
+		var i;
+		var counter = clock.getTime().time;
+		var total = score.getTime().time;
+		var penalty = parseInt($("#penalty").html());
+		var homeNumber = [];
+		var orderTime = [];
+		var pizzaDeliveredTime = [];
+		var cd = [];
+		var cpd = [];
+		var cpcd = [];
+		var ipd = [];
+		var tip = [];
+		for(i=0; i<6; i++)
+		{
+			homeNumber[i] = $("#HomeNumber"+i).val;
+			orderTime[i] = $("#OrderTime"+i).val;
+			pizzaDeliveredTime = $("#pizzaDeliveredTime"+i).val;
+			cd[i] = parseInt($("#CD"+i).html());
+			cpd[i] = parseInt($("#CPD"+i).html());
+			cpcd[i] = parseInt($("#CPCD"+i).html());
+			ipd[i] = parseInt($("#IPD"+i).html());
+			tip[i] = parseInt($("#TIP"+i).html());
+		}
+		var dataToSave = [counter, total, penalty, homeNumber, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip]
+		$.ajax({
+			type 	: "POST",
+			url    	: "{!! route('pizzaDataSave') !!}",
+			data 	: { "dataToSave"	: dataToSave},
+			dataType: 'json'
+		}).done(function(data) {
+			if(!data.error){
+				alert("hi");
+			}
+			else{
+				alert(data.error);
+				}
+		}).fail(function(){
+			alert("Unable to process the request.");
+		});
+	})
 });
 </script>
 </html>
