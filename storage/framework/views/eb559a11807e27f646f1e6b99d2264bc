@@ -118,9 +118,9 @@
 						</th> -->
 					</tr>
 				<?php for($i = 1; $i < 6; $i++): ?>
-					<tr class="progress-bar-<?php echo $i;?>">
+					<tr class="">
 						<div ng-init="OrderTime<?php echo $i;?> = 0">
-							<td class = "text-danger">
+							<td class = "text-danger progress-bar-<?php echo $i;?>">
 								<input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="number" style="width: 40px; height: 25px" min="1" max="12"  maxlength="2">
 							</td>
 								<!-- <input id="PizzaType<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1">&nbsp;&nbsp;&nbsp; -->
