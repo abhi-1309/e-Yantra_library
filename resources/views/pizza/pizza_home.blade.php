@@ -8,18 +8,19 @@
 	<link rel="stylesheet" href="css/pizza.css">
 	</head>
 <body ng-app="">
-	<nav class="navbar navbar-inverse">
-		<div class="col-md-3">
-			<a class="navbar-brand" href="#">
+	</br>
+	<div class="row" style="background-color: #393939;">
+		<div class="col-md-4">
+			<a class="" href="#">
 				<img alt="e-Yantra" src="{!!asset('img/logo.png')!!}">
 			</a>
 		</div>
-		<div class="col-md-6 text-center">
-			<h2 style="color: #00ff40;">PIZZA DELIVERY</h2>
+		<div class="col-md-4 text-center">
+			<h1 style="font-family: WildWest; color: #F3843E;">PIZZA DELIVERY</h1>
 		</div>
-	</nav>
-
-	<div class = "row" style="background-color: #7D1935;">
+	</div>
+	</br>
+	<div class = "row" style="background-color: #73AFB6;">
 		<div class="col-md-4 text-center">
 			<span class="clock-header deliverytimelabel">COUNTER</span>
 			<div class="clockTimer timer">
@@ -28,9 +29,9 @@
 				</div>
 			</div>
 			<h5>
-				<span><button id="decreaseTime" class="btn">-</button>&nbsp;</span>
-				<span id="deliveryTime">00</span>
-				<span>&nbsp;<button id="addTime" class="btn">+</button></span>
+				<!-- <span><button id="decreaseTime" class="btn">-</button>&nbsp;</span> -->
+				<span><input id="deliveryTime" type="number" style="width: 40px; height: 20px"></span>
+				<span>&nbsp;<button id="addTime" class="btn">Set</button></span>
 			</h5>
 			<div class="controls">
 				<button class="btn-success btn" id="onswitch">START</button>
@@ -40,7 +41,7 @@
 		</div>
 
 		<div class="col-md-4">
-			</br></br></br>
+			<!-- </br></br></br>
 			<div class="progress progress-striped active">
 				<div class="progress-bar progress-bar-info popover-example" role="progressbar" style="width:@{{OrderTime1/6}}%">
 				</div>
@@ -48,7 +49,7 @@
 				<div class="progress-bar mypopover" role="progressbar" title="" data-content="OT {{OrderTime<?php echo $i;?>}}"
 					data-html="true" data-placement="top" data-original-title="H.No. {{HomeNumber<?php echo $i;?>}}" style="width:0.5%">
 				</div>
-				<div class="progress-bar  progress-bar-<?php echo $i;?>" role="progressbar" style="width:{{(OrderTime<?php echo $i+1;?> - OrderTime<?php echo $i;?>)/6}}%;">
+				<div class="progress-bar  progress-bar-<?php echo $i;?>" role="progressbar" style="width:{{(OrderTime<?php echo $i+1;?> + 50)/6}}%;">
 					{{HomeNumber<?php echo $i;?>}} -- {{PizzaType<?php echo $i;?>}} -- {{OrderType<?php echo $i;?>}} -- {{OrderTime<?php echo $i;?>}}
 				</div>
 
@@ -69,7 +70,7 @@
 					{{HomeNumber<?php echo $i;?>}} -- {{PizzaType<?php echo $i;?>}} -- {{OrderType<?php echo $i;?>}} -- {{OrderTime<?php echo $i;?>}}
 				</div>
 				@endfor
-			</div>
+			</div> -->
 		</div>
 
 		<div class="col-md-4 text-center">
@@ -85,10 +86,20 @@
 		</div>
 	</div>
 	</br>
-	<div class = "row" style="background-color: #FF9C5F">
+	<div class = "row" style="background-color: #393939">
+		<div class="col-md-10 col-md-offset-1 text-danger text-center">
+			<h3>
+				&ensp;&ensp;Team ID
+				</br>
+				<input id="teamId" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px">
+			</h3>
+		</div>
+	</div>
+
+	<div class = "row" style="background-color: #393939">
 		<div class="col-md-10 col-md-offset-1">
 			<table class="table ">
-					<tr class="text-danger" style="background-color: #FF9331;">
+					<tr class="text-danger">
 						<th>
 							<h3>H.No.</h3>
 						</th>
@@ -102,10 +113,7 @@
 							<h3>Order Time</h3>
 						</th>
 						<th>
-							<h3>Dead Line</h3>
-						</th>
-						<th>
-							<h3>Order Time</br>Window</h3>
+							<h3>Guarantee Time</h3>
 						</th>
 						<th>
 							<h3>Pizza Del. Time</h3>
@@ -117,11 +125,11 @@
 							<h3>Points</h3>
 						</th> -->
 					</tr>
-				@for($i = 1; $i < 6; $i++)
-					<tr class="">
+				@for($i = 1; $i < 8; $i++)
+					<tr class="text-danger" style="font-size:25px;">
 						<div ng-init="OrderTime<?php echo $i;?> = 0">
-							<td class = "text-danger progress-bar-<?php echo $i;?>">
-								<input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="number" style="width: 40px; height: 25px" min="1" max="12"  maxlength="2">
+							<td class = "text-danger">
+								<input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="number" style="width: 40px; height: 40px" min="1" max="12"  maxlength="2">
 							</td>
 								<!-- <input id="PizzaType<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1">&nbsp;&nbsp;&nbsp; -->
 							<td>
@@ -133,24 +141,31 @@
 
 								<button id="bLarge<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = L" onClick="Large(<?php echo $i;?>)" type="button" class="label label-success">L
 								</button>
+
+								<button id="bBlue<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = S" onClick="Blue(<?php echo $i;?>)" type="button" class="label label-primary" style='display:none'>B
+								</button>
+
+								<button id="bGreen<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = M" onClick="Green(<?php echo $i;?>)" type="button" class="label label-success" style='display:none'>G
+								</button>
+
+								<button id="bRed<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = L" onClick="Red(<?php echo $i;?>)" type="button" class="label label-danger" style='display:none'>R
+								</button>
 							</td>
 							<td>
 								<!-- <input id="OrderType<?php echo $i;?>" ng-model="OrderType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1"> -->
-								<button id="RegularOrder<?php echo $i;?>" onClick="RegularOrder(<?php echo $i;?>)" type="button" class="label label-1">Reg Or.</button>
-								<button id="PreOrder<?php echo $i;?>" onClick="PreOrder(<?php echo $i;?>)" type="button" class="label label-warning">Pre Or.</button>
+								<button id="RegularOrder<?php echo $i;?>" onClick="RegularOrder(<?php echo $i;?>)" type="button" class="label label-1">R<span id="RegOr<?php echo $i;?>" style='display:none'>0</span></button>
+								<button id="PreOrder<?php echo $i;?>" onClick="PreOrder(<?php echo $i;?>)" type="button" class="label label-warning">P<span id="PreOr<?php echo $i;?>" style='display:none'>0</span></button>
 							</td>
 							<td>
-								<input id="OrderTime<?php echo $i;?>" ng-model="OrderTime<?php echo $i;?>" type="number" style="width: 60px; height: 25px" min="1" max="999" maxlength="3" name="row<?php echo $i;?>">
+								<input id="OrderTime<?php echo $i;?>" ng-model="OrderTime<?php echo $i;?>" type="number" style="width: 60px; height: 40px" min="1" max="999" maxlength="3" name="row<?php echo $i;?>">
 							</td>
 							<td>
-								<div style="font-family: fantasy;">{{OrderTime<?php echo $i;?> + 50}}</div>
-							</td>
-							<td>
-								<div style="font-family: fantasy;">{{OrderTime<?php echo $i;?> - 50}} --- {{OrderTime<?php echo $i;?> + 50}}</div>
+								<div id="deadLine<?php echo $i;?>" style="font-family: fantasy; display:none">{{OrderTime<?php echo $i;?> + 50}}</div>
+								<div id="orderWindow<?php echo $i;?>" style="font-family: fantasy; display:none">{{OrderTime<?php echo $i;?> - 50}} --- {{OrderTime<?php echo $i;?> + 50}}</div>
 							</td>
 							<td>
 								<button id="pizzaDelivered<?php echo $i;?>"  type="button" class="btn btn-primary" onClick="pizzaDelivered(<?php echo $i;?>)">Pizza Delivered</button>
-								<input id="pizzaDeliveredTime<?php echo $i;?>" type="text" style="width: 80px; height: 25px" name="row<?php echo $i;?>" value = ''>
+								<input id="pizzaDeliveredTime<?php echo $i;?>" type="text" style="width: 80px; height: 40px" name="row<?php echo $i;?>" value = ''>
 							</td>
 							<td style="text-align: center; font-family: cursive;">
 								<button id="bCD<?php echo $i;?>" ng-model="CD<?php echo $i;?>" onClick="CD(<?php echo $i;?>)" type="button" class="label label-info">CD
@@ -177,10 +192,10 @@
 	 	    	@endfor
 	 	    </table>
 		</div>
-		<div id = "totalPoints" style="visibility: hidden">
+		<!-- <div id = "totalPoints" style="visibility: hidden">
 	 	    @{{100}}
-	 	</div>
-		<div class="col-md-1" style="margin-top: 5cm;">
+	 	</div> -->
+		<div class="col-md-1" style="margin-top: 2cm;">
 			<button id="Penalty<?php echo $i;?>" ng-model="Penalty<?php echo $i;?>" onClick="Penalty()" type="button" class="btn btn-danger">Penalty<a href="#"><span id="penalty" class="badge">0</span></a></button>
 		</div>
 	</div>
@@ -228,12 +243,6 @@ $(document).ready(function(){
 		countdown: true
 	});
 
-	$("#total").click(function(){
-		$(".scorelabel").addClass("text-success");
-		score.setTime(parseInt($("#totalPoints").html()));
-		audio.play();
-	})
-
 	// Managing the Switch Buttons
 	$("#onswitch").click(function(){
 		clock.setTime(clock.getTime().time);
@@ -264,20 +273,20 @@ $(document).ready(function(){
 
 	// Add to Session value with + button
 	$("#addTime").click(function(){
-		deliveryTime = parseInt($("#deliveryTime").html());
+		deliveryTime = parseInt($("#deliveryTime").val());
 		$("#deliveryTime").html(deliveryTime + 1);
-		clock.setTime(parseInt($("#deliveryTime").html()));
+		clock.setTime(parseInt($("#deliveryTime").val()));
 	})
 
 	// Remove from Session value with - button
-	$("#decreaseTime").click(function(){
+	/*$("#decreaseTime").click(function(){
 		deliveryTime = parseInt($("#deliveryTime").html());
 		$("#deliveryTime").html(deliveryTime - 1);
 		if(deliveryTime === 1){
 			$("#deliveryTime").html(1);
 		}
 		clock.setTime(parseInt($("#deliveryTime").html()));
-	})
+	})*/
 });
 
 function pizzaDelivered(i) {
@@ -289,13 +298,17 @@ function pizzaDelivered(i) {
 
 function RegularOrder(i) {
 	document.getElementById("OrderTime"+i).style.backgroundColor = "#2c8a7e";
+	$("#RegOr"+i).html(1);
 	$("#PreOrder"+i).hide();
+	$("#deadLine"+i).show();
 	audio.play();
 }
 
 function PreOrder(i) {
 	document.getElementById("OrderTime"+i).style.backgroundColor = "orange";
+	$("#PreOr"+i).html(1);
 	$("#RegularOrder"+i).hide();
+	$("#orderWindow"+i).show();
 	audio.play();
 }
 
@@ -340,29 +353,69 @@ function Penalty(){
 }
 
 function Small(i) {
+	$("#bSmall"+i).hide();
 	$("#bMedium"+i).hide();
 	$("#bLarge"+i).hide();
+	$("#bBlue"+i).show();
+	$("#bGreen"+i).show();
+	$("#bRed"+i).show();
+	$("#bBlue"+i).html('BS');
+	$("#bGreen"+i).html('GS');
+	$("#bRed"+i).html('RS');
 	audio.play();
 }
 
 function Medium(i) {
 	$("#bSmall"+i).hide();
+	$("#bMedium"+i).hide();
 	$("#bLarge"+i).hide();
+	$("#bBlue"+i).show();
+	$("#bGreen"+i).show();
+	$("#bRed"+i).show();
+	$("#bBlue"+i).html('BM');
+	$("#bGreen"+i).html('GM');
+	$("#bRed"+i).html('RM');
 	audio.play();
 }
 
 function Large(i) {
 	$("#bSmall"+i).hide();
 	$("#bMedium"+i).hide();
+	$("#bLarge"+i).hide();
+	$("#bBlue"+i).show();
+	$("#bGreen"+i).show();
+	$("#bRed"+i).show();
+	$("#bBlue"+i).html('BL');
+	$("#bGreen"+i).html('GL');
+	$("#bRed"+i).html('RL');
+	audio.play();
+}
+function Blue(i) {
+	$("#bGreen"+i).hide();
+	$("#bRed"+i).hide();
+	audio.play();
+}
+
+function Green(i) {
+	$("#bBlue"+i).hide();
+	$("#bRed"+i).hide();
+	audio.play();
+}
+
+function Red(i) {
+	$("#bGreen"+i).hide();
+	$("#bBlue"+i).hide();
 	audio.play();
 }
 </script>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	var dataToSave;
 	$("#save").click(function(){
 		//alert("Database is not connected");
 		var i;
+		var teamId = $("#teamId").val();
 		var counter = clock.getTime().time;
 		var total = score.getTime().time;
 		var penalty = parseInt($("#penalty").html());
@@ -374,22 +427,24 @@ $(document).ready(function(){
 		var cpcd = [];
 		var ipd = [];
 		var tip = [];
-		for(i=0; i<6; i++)
+
+		for(i=1; i<8; i++)
 		{
-			homeNumber[i] = $("#HomeNumber"+i).val;
-			orderTime[i] = $("#OrderTime"+i).val;
-			pizzaDeliveredTime = $("#pizzaDeliveredTime"+i).val;
+			homeNumber[i] = $("#HomeNumber"+i).val();
+			orderTime[i] = $("#OrderTime"+i).val();
+			pizzaDeliveredTime[i] = $("#pizzaDeliveredTime"+i).val();
 			cd[i] = parseInt($("#CD"+i).html());
 			cpd[i] = parseInt($("#CPD"+i).html());
 			cpcd[i] = parseInt($("#CPCD"+i).html());
 			ipd[i] = parseInt($("#IPD"+i).html());
 			tip[i] = parseInt($("#TIP"+i).html());
 		}
-		var dataToSave = [counter, total, penalty, homeNumber, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip]
+		dataToSave = [teamId, counter, total, penalty, homeNumber, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip]
+		var token = $('meta[name="csrf-token"]').attr('content');
 		$.ajax({
 			type 	: "POST",
 			url    	: "{!! route('pizzaDataSave') !!}",
-			data 	: { "dataToSave"	: dataToSave},
+			data 	: {"dataToSave"	: dataToSave,'_token': '{!! csrf_token() !!}'},
 			dataType: 'json'
 		}).done(function(data) {
 			if(!data.error){
@@ -401,6 +456,59 @@ $(document).ready(function(){
 		}).fail(function(){
 			alert("Unable to process the request.");
 		});
+	})
+
+	$("#total").click(function(){
+		var i;
+		var counter = clock.getTime().time;
+		var total = score.getTime().time;
+		var penalty = parseInt($("#penalty").html());
+		var homeNumber = [];
+		var orderTime = [];
+		var pizzaDeliveredTime = [];
+		var cd = [];
+		var cpd = [];
+		var cpcd = [];
+		var ipd = [];
+		var regOr = [];
+		var preOr = [];
+		var pizzaDeliveredPoints = [];
+		var cd_p = 0;
+		var cpd_p = 0;
+		var cpcd_p = 0;
+		var ipd_p = 0;
+		var tip = 0;
+		var totalPoints = 0;
+		for(i=1; i<8; i++)
+		{
+			homeNumber[i] = parseInt($("#HomeNumber"+i).val());
+			orderTime[i] = parseInt($("#OrderTime"+i).val());
+			pizzaDeliveredTime[i] = parseInt($("#pizzaDeliveredTime"+i).val());
+			cd[i] = parseInt($("#CD"+i).html());
+			cpd[i] = parseInt($("#CPD"+i).html());
+			cpcd[i] = parseInt($("#CPCD"+i).html());
+			ipd[i] = parseInt($("#IPD"+i).html());
+			cd_p = cd_p + parseInt($("#CD"+i).html());
+			cpd_p = cpd_p + parseInt($("#CPD"+i).html());
+			cpcd_p = cpcd_p + parseInt($("#CPCD"+i).html());
+			ipd_p = ipd_p + parseInt($("#IPD"+i).html());
+			//tip = tip + parseInt($("#TIP"+i).html());
+			regOr[i] = parseInt($("#RegOr"+i).html());
+			preOr[i] = parseInt($("#PreOr"+i).html());
+			if(regOr[i] == 1){
+				if(pizzaDeliveredTime[i] >= orderTime[i] && pizzaDeliveredTime[i] <= (orderTime[i]+50) && cd[i] == 1 && cpd[i] == 1 && cpcd[i] == 1 && ipd[i] == 0){
+					tip = tip+1;
+				}
+			}
+			if(preOr[i] == 1){
+				if(pizzaDeliveredTime[i] >= (orderTime[i]-50) && pizzaDeliveredTime[i] <= (orderTime[i]+50) && cd[i] == 1 && cpd[i] == 1 && cpcd[i] == 1 && ipd[i] == 0){
+					tip = tip+1;
+				}
+			}
+		}
+
+		totalPoints = ((600-counter) + (cpd_p*50) +  (cpcd_p*50) + (tip*50) + (cd_p*10) - (ipd_p*20) - (penalty*50));
+		score.setTime(totalPoints);
 	})
 });
 </script>

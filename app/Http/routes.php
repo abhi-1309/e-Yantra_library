@@ -1,4 +1,5 @@
 <?php
+use Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,12 @@ Route::match(array('GET'), '/pizza', array(
 	'as'			=>	'pizza',
 	'uses'			=>	'pizzaController@pizzahome'
 	));
-Route::match(array('GET'), '/pizzaDataSave', array(
+Route::match(array('GET','POST'), '/pizzaDataSave', array(
+
 	'as'			=>	'pizzaDataSave',
 	'uses'			=>	'pizzaController@DataSave'
 	));
+
 
 
 
