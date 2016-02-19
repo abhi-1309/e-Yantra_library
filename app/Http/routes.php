@@ -36,6 +36,12 @@ Route::match(array('GET','POST'), '/pizzaDataSave', array(
 	'as'			=>	'pizzaDataSave',
 	'uses'			=>	'pizzaController@DataSave'
 	));
+Route::match(array('GET','POST'), '/pizzaResetData', array(
+
+	'as'			=>	'pizzaResetData',
+	'uses'			=>	'pizzaController@ResetData'
+	));
+
 
 
 
