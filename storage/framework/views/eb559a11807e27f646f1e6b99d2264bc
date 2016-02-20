@@ -29,7 +29,6 @@
 				</div>
 			</div>
 			<h5>
-				<!-- <span><button id="decreaseTime" class="btn">-</button>&nbsp;</span> -->
 				<span><input id="deliveryTime" type="number" style="width: 40px; height: 20px" value="0"></span>
 				<span>&nbsp;<button id="addTime" class="btn">Set</button></span>
 			</h5>
@@ -41,36 +40,6 @@
 		</div>
 
 		<div class="col-md-4">
-			<!-- </br></br></br>
-			<div class="progress progress-striped active">
-				<div class="progress-bar progress-bar-info popover-example" role="progressbar" style="width:{{OrderTime1/6}}%">
-				</div>
-				<?php for($i = 1; $i < 6; $i++): ?>
-				<div class="progress-bar mypopover" role="progressbar" title="" data-content="OT {{OrderTime<?php echo $i;?>}}"
-					data-html="true" data-placement="top" data-original-title="H.No. {{HomeNumber<?php echo $i;?>}}" style="width:0.5%">
-				</div>
-				<div class="progress-bar  progress-bar-<?php echo $i;?>" role="progressbar" style="width:{{(OrderTime<?php echo $i+1;?> + 50)/6}}%;">
-					{{HomeNumber<?php echo $i;?>}} -- {{PizzaType<?php echo $i;?>}} -- {{OrderType<?php echo $i;?>}} -- {{OrderTime<?php echo $i;?>}}
-				</div>
-
-				<?php endfor; ?>
-			</div>
-			<div class="progress progress-striped active" >
-				<div id = 'incrementalProgressBar' class="progress-bar progress-bar-danger" width="40%"></div>
-			</div>
-			<div class="progress progress-striped active">
-				<div class="progress-bar progress-bar-info" role="progressbar" style="width:{{OrderTime1/6}}%">
-				</div>
-				<div class="progress-bar progress-bar-success" role="progressbar" style="width:{{50/6}}%">
-				</div>
-				<?php for($i = 1; $i < 6; $i++): ?>
-				<div class="progress-bar progress-bar-info mypopover popover-example" role="progressbar" title="" data-content="DL {{OrderTime<?php echo $i;?> + 50}}<br> PT {{PizzaType<?php echo $i;?>}}<br>OTy {{OrderType<?php echo $i;?>}}" data-html="true" data-placement="bottom" data-original-title="H.No. {{HomeNumber<?php echo $i;?>}}" style="width:0.5%">
-				</div>
-				<div class="progress-bar progress-bar-<?php echo $i;?>" role="progressbar" style="width:{{(OrderTime<?php echo $i+1;?> - OrderTime<?php echo $i;?>)/6}}%">
-					{{HomeNumber<?php echo $i;?>}} -- {{PizzaType<?php echo $i;?>}} -- {{OrderType<?php echo $i;?>}} -- {{OrderTime<?php echo $i;?>}}
-				</div>
-				<?php endfor; ?>
-			</div> -->
 		</div>
 
 		<div class="col-md-4 text-center">
@@ -82,7 +51,7 @@
 				</br></br></br>
 			</div>
 			&emsp;&emsp;&emsp;<button id="total" class="btn btn-danger">Total</button>
-			<button id="save" class="btn btn-success">Save</button>
+			<button id="save" class="btn btn-success" disabled>Save</button>
 		</div>
 	</div>
 	</br>
@@ -91,8 +60,13 @@
 			<h3>
 				&ensp;&ensp;Team ID
 				</br>
-				<input id="teamId" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px">
+				<input id="teamId" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px" value="1">
 			</h3>
+			<!-- <h3>
+				&ensp;&ensp;Home Count
+				</br>
+				<input id="homeCount" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px" ng-model="homeCount">
+			</h3> -->
 		</div>
 	</div>
 
@@ -121,17 +95,14 @@
 						<th>
 							<h3>Del. Status</h3>
 						</th>
-						<!-- <th>
-							<h3>Points</h3>
-						</th> -->
 					</tr>
+
 				<?php for($i = 1; $i < 8; $i++): ?>
 					<tr class="text-danger" style="font-size:25px;">
 						<div ng-init="OrderTime<?php echo $i;?> = 0">
 							<td class = "text-danger">
 								<input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="number" style="width: 40px; height: 40px" min="1" max="12"  maxlength="2">
 							</td>
-								<!-- <input id="PizzaType<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1">&nbsp;&nbsp;&nbsp; -->
 							<td id="PizzaType<?php echo $i;?>">
 								<button id="bSmall<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = S" onClick="Small(<?php echo $i;?>)" type="button" class="label label-info">S
 								</button>
@@ -152,7 +123,6 @@
 								</button>
 							</td>
 							<td id="OrderType<?php echo $i;?>">
-								<!-- <input id="OrderType<?php echo $i;?>" ng-model="OrderType<?php echo $i;?>" type="text" style="width: 40px; height: 25px" maxlength="1"> -->
 								<button id="RegularOrder<?php echo $i;?>" onClick="RegularOrder(<?php echo $i;?>)" type="button" class="label label-1">R<span id="RegOr<?php echo $i;?>" style='display:none'>0</span></button>
 								<button id="PreOrder<?php echo $i;?>" onClick="PreOrder(<?php echo $i;?>)" type="button" class="label label-warning">P<span id="PreOr<?php echo $i;?>" style='display:none'>0</span></button>
 							</td>
@@ -183,6 +153,8 @@
 								<button id="bIPD<?php echo $i;?>" ng-model="IPD<?php echo $i;?>" onClick="IPD(<?php echo $i;?>)" type="button" class="label label-warning">IPD
 									<a href="#"><span id="IPD<?php echo $i;?>" class="badge">0</span></a>
 								</button>
+
+								<a href="#"><span id="resetStatus<?php echo $i;?>" ng-model="resetStatus<?php echo $i;?>" onClick="resetStatus(<?php echo $i;?>)" class="badge" style="background-color: #d9534f">r</span></a>
 							</td>
 							<!-- <td>
 								<input type="number" ng-model="points<?php echo $i;?>" style="width: 80px; height: 25px" name="row<?php echo $i;?>" value = ''>
@@ -192,14 +164,12 @@
 	 	    	<?php endfor; ?>
 	 	    </table>
 		</div>
-		<!-- <div id = "totalPoints" style="visibility: hidden">
-	 	    {{100}}
-	 	</div> -->
+
 		<div class="col-md-1" style="margin-top: 2cm;">
 			<button id="Penalty<?php echo $i;?>" ng-model="Penalty<?php echo $i;?>" onClick="Penalty()" type="button" class="btn btn-danger">Penalty<a href="#"><span id="penalty" class="badge">0</span></a></button>
 		</div>
 		<div class="col-md-1" style="margin-top: 2cm;">
-			<button id="Reset" ng-model="Reset" onClick="Reset()" type="button" class="btn btn-info">Reset</button>
+			<button id="Reset" ng-model="Reset" onClick="Reset()" type="button" class="btn btn-eyrc11">Reset</button>
 		</div>
 	</div>
 	<div class="col-md-10 col-md-offset-1" style="padding-top: 15px;">
@@ -282,16 +252,6 @@ $(document).ready(function(){
 		$("#deliveryTime").html(deliveryTime + 1);
 		clock.setTime(parseInt($("#deliveryTime").val()));
 	})
-
-	// Remove from Session value with - button
-	/*$("#decreaseTime").click(function(){
-		deliveryTime = parseInt($("#deliveryTime").html());
-		$("#deliveryTime").html(deliveryTime - 1);
-		if(deliveryTime === 1){
-			$("#deliveryTime").html(1);
-		}
-		clock.setTime(parseInt($("#deliveryTime").html()));
-	})*/
 });
 
 function pizzaDelivered(i) {
@@ -351,6 +311,19 @@ function IPD(i) {
 		$("#IPD"+i).html(1);
 		$("#bCPD"+i).hide();
 	}
+	audio.play();
+}
+
+function resetStatus(i) {
+	//document.getElementById("resetStatus"+i).style.backgroundColor = "#2c8a7e";
+	$("#CD"+i).html(0);
+	$("#CPD"+i).html(0);
+	$("#CPCD"+i).html(0);
+	$("#IPD"+i).html(0);
+	$("#bCD"+i).show();
+	$("#bCPD"+i).hide();
+	$("#bCPCD"+i).hide();
+	$("#bIPD"+i).show();
 	audio.play();
 }
 
@@ -449,14 +422,6 @@ $(document).ready(function(){
 		var i;
 		counter = clock.getTime().time;
 		penalty = parseInt($("#penalty").html());
-		//var homeNumber = [];
-		//var orderTime = [];
-		//var pizzaDeliveredTime = [];
-		//var cd = [];
-		//var cpd = [];
-		//var cpcd = [];
-		//var ipd = [];
-		//var tip = [];
 
 		for(i=1; i<8; i++)
 		{
@@ -471,12 +436,9 @@ $(document).ready(function(){
 			cpd_p = cpd_p + parseInt($("#CPD"+i).html());
 			cpcd_p = cpcd_p + parseInt($("#CPCD"+i).html());
 			ipd_p = ipd_p + parseInt($("#IPD"+i).html());
-			//tip = tip + parseInt($("#TIP"+i).html());
 			regOr[i-1] = parseInt($("#RegOr"+i).html());
 			preOr[i-1] = parseInt($("#PreOr"+i).html());
-			/*pizzaType[i-1] = $("#PizzaType"+i).html();
-			orderType[i-1] = $("#OrderType"+i).html();
-			alert(pizzaType);*/
+
 			if(regOr[i-1] == 1){
 				if(pizzaDeliveredTime[i-1] >= orderTime[i-1] && pizzaDeliveredTime[i-1] <= (orderTime[i-1]+50) && cd[i-1] == 1 && cpd[i-1] == 1 && cpcd[i-1] == 1 && ipd[i-1] == 0){
 					tip_p = tip_p+1;
@@ -499,27 +461,14 @@ $(document).ready(function(){
 
 		totalPoints = ((600-counter) + (cpd_p*50) +  (cpcd_p*50) + (tip_p*50) + (cd_p*10) - (ipd_p*20) - (penalty*50));
 
-		//alert(totalPoints);
 		score.setTime(totalPoints);
 		$(this).prop('disabled', true);
+		$("#save").prop('disabled', false);
 	})
 
 	$("#save").click(function(){
-		//alert("Database is not connected");
 		teamId = $("#teamId").val();
 		total = score.getTime().time;
-		//alert(tip);
-		/*for(i=1; i<8; i++)
-		{
-			homeNumber[i-1] = $("#HomeNumber"+i).val();
-			orderTime[i-1] = $("#OrderTime"+i).val();
-			pizzaDeliveredTime[i-1] = $("#pizzaDeliveredTime"+i).val();
-			cd[i-1] = parseInt($("#CD"+i).html());
-			cpd[i-1] = parseInt($("#CPD"+i).html());
-			cpcd[i-1] = parseInt($("#CPCD"+i).html());
-			ipd[i-1] = parseInt($("#IPD"+i).html());
-			//tip[i-1] = parseInt($("#TIP"+i).html());
-		}*/
 
 		dataToSave = [teamId, counter, total, penalty, homeNumber, pizzaType, orderType, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip, cd_p, cpd_p, cpcd_p, ipd_p, tip_p ]
 		//ResultToSave = [teamId, counter, total, penalty, homeNumber, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip]
@@ -552,14 +501,18 @@ $(document).ready(function(){
 			dataType: 'json'
 		}).done(function(data) {
 			if(!data.error){
-				alert(data[0].id);
+				//alert(data.resetTableData[0].home_no)
+				for(i=1; i<8; i++)
+				{
+					$("#HomeNumber"+i).val(data.resetTableData[i-1].home_no);
+					$("#OrderTime"+i).val(data.resetTableData[i-1].order_time);
+				}
 			}
 			else{
 
 			}
 		});
 	})
-
 });
 </script>
 </html>

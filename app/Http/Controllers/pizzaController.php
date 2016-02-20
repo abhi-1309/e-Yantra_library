@@ -58,7 +58,10 @@ class pizzaController extends Controller {
   public function ResetData(){
     $resetTeamId = Input::get('pizzaResetDataTeamId');
 
-    $resetData = pizzaDeliveryTable::where('team_id', $resetTeamId)->get();
+    $resetTableData = pizzaDeliveryTable::where('team_id', $resetTeamId)->get();
+    $resetTeamResultData = pizzaDeliveryResult::where('team_id', $resetTeamId)->first();
+
+    $resetData = ['resetTableData' => $resetTableData, 'resetTeamResultData' => $resetTeamResultData];
     //Log::info($resetData);
     return json_encode($resetData);
   }
