@@ -12,7 +12,7 @@
     <div class="row" style="background-color: #393939;">
         <div class="col-md-4">
             <a class="" href="#">
-                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}">
+                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}" style="margin-top:10px; width:250px; height:50px;">
             </a>
         </div>
         <div class="col-md-4 text-center">
@@ -39,8 +39,9 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-        </div>
+        <div class="col-md-4 text-center" style="margin-top: 50px;">
+			<img src="http://localhost:8999/img/animation/animated_pizza_image_2.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+		</div>
 
         <div class="col-md-4 text-center">
             <span class="clock-header scorelabel">&emsp;SCORE</span>
@@ -56,16 +57,13 @@
     </div>
     </br>
     <div class = "row" style="background-color: #393939">
-        <div class="col-md-10 col-md-offset-1 text-danger text-center">
+        <div class="col-md-10 col-md-offset-1 text-danger text-center" ng-init='homeCount = 8'>
             <h3>
                 &ensp;&ensp;Team ID
-                </br>
                 <input id="teamId" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px" value="1">
-            </h3>
-            <h3 ng-init='homeCount = 4'>
+
                 &ensp;&ensp;Home Count
-                </br>
-                <input id="homeCount" ng-model="homeCount" type="number" style="margin-left: 0.5cm; width: 100px; height: 30px">
+                <input id="homeCount" ng-model="homeCount" type="number" style="margin-left: 0.5cm; width: 60px; height: 40px">
             </h3>
         </div>
     </div>
@@ -96,7 +94,7 @@
                         </th>
                     </tr>
 
-                @for($i = 1; $i < 12; $i++)
+                @for($i = 1; $i <= 12; $i++)
                     <tr ng-if="<?php echo $i;?> <= homeCount" class="text-danger" style="font-size:25px;">
                         <div ng-init="OrderTime<?php echo $i;?> = 0">
                             <td class = "text-danger">
@@ -159,7 +157,7 @@
                                 <input type="number" ng-model="points<?php echo $i;?>" style="width: 80px; height: 25px" name="row<?php echo $i;?>" value = ''>
                             </td> -->
                         </div>
-                        
+
                     </tr>
                 @endfor
             </table>
@@ -417,13 +415,17 @@ $(document).ready(function(){
     var tip_p = 0;
     var pizzaDeliveredPoints = [];
     var totalPoints = 0;
-    var homeCount
-        
+    var homeCount;
+
     $("#total").click(function(){
         var i;
         homeCount = parseInt($("#homeCount").val());
         counter = clock.getTime().time;
         penalty = parseInt($("#penalty").html());
+        if(homeCount > 12){
+        	homeCount = 12;
+        }
+
         for(i=1; i<=homeCount; i++)
         {
             homeNumber[i-1] = parseInt($("#HomeNumber"+i).val());
@@ -471,8 +473,10 @@ $(document).ready(function(){
         teamId = $("#teamId").val();
         total = score.getTime().time;
         homeCount = parseInt($("#homeCount").val());
-
-        dataToSave = [teamId, counter, total, penalty, homeNumber, pizzaType, orderType, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip, cd_p, cpd_p, cpcd_p, ipd_p, tip_p, homeCount]
+        if(homeCount > 12){
+        	homeCount = 12;
+        }
+        dataToSave = [teamId, counter, total, penalty, homeNumber, pizzaType, orderType, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip, cd_p, cpd_p, cpcd_p, ipd_p, tip_p, homeCount];
         //ResultToSave = [teamId, counter, total, penalty, homeNumber, orderTime, pizzaDeliveredTime, cd, cpd, cpcd, ipd, tip]
         var token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
@@ -482,19 +486,24 @@ $(document).ready(function(){
             dataType: 'json'
         }).done(function(data) {
             if(!data.error){
-                alert("hi");
-            }
-            else{
-                alert(data.error);
-                }
+				alert("Successfully Saved Status.");
+				$("#save").prop('disabled', true);
+				alert("jhh");
+			}
+			else{
+				alert("Status is not Saved, Check Inputs.");
+			}
         });
 
-        $(this).prop('disabled', true);
+        //$(this).prop('disabled', true);
     })
 
     $("#Reset").click(function(){
         teamId = $("#teamId").val();
         homeCount = parseInt($("#homeCount").val());
+        if(homeCount > 12){
+        	homeCount = 12;
+        }
         var token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             type    : "POST",

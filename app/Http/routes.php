@@ -37,11 +37,17 @@ Route::match(array('GET','POST'), '/pizzaDataSave', array(
 	'uses'			=>	'pizzaController@DataSave'
 	));
 Route::match(array('GET','POST'), '/pizzaResetData', array(
-
 	'as'			=>	'pizzaResetData',
 	'uses'			=>	'pizzaController@ResetData'
 	));
-
+Route::match(array('GET'), '/pizzaScoreResult', array(
+	'as'			=>	'pizzaScoreResult',
+	'uses'			=>	'pizzaController@ScoreResult'
+	));
+Route::match(array('GET','POST'), '/scoreResultData', array(
+	'as'			=>	'scoreResultData',
+	'uses'			=>	'pizzaController@scoreResultData'
+	));
 
 
 
