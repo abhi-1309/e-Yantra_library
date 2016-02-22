@@ -18,9 +18,10 @@ class pizzaController extends Controller {
   public function DataSave()
   {
     $dataToSave = Input::get('dataToSave');
+    $homeCount = $dataToSave[19];
   	log::info($dataToSave);
 
-    for($i=0; $i<7; $i++){
+    for($i=0; $i<$homeCount; $i++){
       $pizzaDeliveryTable = new pizzaDeliveryTable;
 
       $pizzaDeliveryTable->team_id = $dataToSave[0];
