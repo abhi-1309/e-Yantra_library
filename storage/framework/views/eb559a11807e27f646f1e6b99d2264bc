@@ -98,7 +98,7 @@
                     <tr ng-if="<?php echo $i;?> <= homeCount" class="text-danger" style="font-size:25px;">
                         <div ng-init="OrderTime<?php echo $i;?> = 0">
                             <td class = "text-danger">
-                                <input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?> = <?php echo $i;?>" type="number" style="width: 40px; height: 40px" min="1" max="12"  maxlength="2">
+                                <input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?> = <?php echo $i;?>" type="number" style="width: 60px; height: 40px" min="1" max="12"  maxlength="2">
                             </td>
                             <td id="PizzaType<?php echo $i;?>">
                                 <button id="bSmall<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = S" onClick="Small(<?php echo $i;?>)" type="button" class="label label-info">S

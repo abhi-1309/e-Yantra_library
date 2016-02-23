@@ -1,4 +1,3 @@
-<?php $thisPage="workshop" ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@
     <div class="row" style="background-color: #393939;">
         <div class="col-md-4">
             <a class="" href="#">
-                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}" style="margin-top:10px; width:250px; height:50px;">
+                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}" style="width:250px; height:50px;">
             </a>
         </div>
         <div class="col-md-4 text-center">
@@ -35,9 +34,9 @@
     </div>
     </br>
     <div class = "row" style="background-color: #393939">
-        <div class="col-md-1" style="margin-top: 2cm;">
+        <!-- <div class="col-md-1" style="margin-top: 2cm;">
             <button id="Reset" ng-model="Reset" onClick="Reset()" type="button" class="btn btn-eyrc11">Reset</button>
-        </div>
+        </div> -->
     </div>
     <div class = "row" style="background-color: #393939">
         <div class="col-md-10 col-md-offset-1">
@@ -60,9 +59,18 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular.min.js"></script>
 <script src="js/flipclock.min.js"></script>
+<script src="js/tsorter.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#Reset").click(function(){
+    function init() {
+        var sorter = tsorter.create('PizzaStatusByTeams');
+    }
+
+    window.onload = init;
+
+    window.onload = retrieveTeamStatus();
+	/*$("#Reset").click(*/
+    function retrieveTeamStatus(){
         var token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             type    : "POST",
@@ -73,8 +81,8 @@ $(document).ready(function(){
             if(!data.error){
     			$('#PizzaStatusByTeams').append('<thead>\
 					<tr>\
-					<th><h3>ID</h3></th>\
-					<th><h3>Team ID</h3></th>\
+					<th data-tsorter="numeric">ID</h3></th>\
+					<th data-tsorter="numeric"><h3>Team ID</h3></th>\
 					<th><h3>Total Time</h3></th>\
 					<th><h3>Correct Detection</h3></th>\
 					<th><h3>Correct Pizza Detection</h3></th>\
@@ -105,7 +113,7 @@ $(document).ready(function(){
             	alert('Something went wrong');
             }
         });
-    })
+    }
 });
 </script>
 </html>
