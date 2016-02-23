@@ -81,7 +81,7 @@ $(document).ready(function(){
             if(!data.error){
     			$('#PizzaStatusByTeams').append('<thead>\
 					<tr>\
-					<th data-tsorter="numeric">ID</h3></th>\
+					<th data-tsorter="numeric"><h3>ID</h3></th>\
 					<th data-tsorter="numeric"><h3>Team ID</h3></th>\
 					<th><h3>Total Time</h3></th>\
 					<th><h3>Correct Detection</h3></th>\
