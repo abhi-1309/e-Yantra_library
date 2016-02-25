@@ -493,6 +493,7 @@ $(document).ready(function(){
 				$("#save").prop('disabled', true);
 			}
 			else{
+                $("#total").prop('disabled', false);
 				alert("Status is not Saved, Check Inputs.");
 			}
         });
