@@ -38,7 +38,7 @@
             <button id="Reset" ng-model="Reset" onClick="Reset()" type="button" class="btn btn-eyrc11">Reset</button>
         </div> -->
     </div>
-    <div class = "row" style="background-color: #393939">
+    <div class = "row" style="background-color: #393939;font-family: Orbitron;">
         <div class="col-md-10 col-md-offset-1">
             <table id="PizzaStatusByTeams" class="table text-danger">
 
