@@ -40,7 +40,10 @@
         </div>
 
         <div class="col-md-4 text-center" style="margin-top: 50px;">
-			<img src="http://localhost:8999/img/animation/animated_pizza_image_2.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+			<img src="/img/animation/animated_pizza_image_2.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+            <div class="row">
+            <a href="/pizzaScoreResult" class="btn btn-info" target="blank" style="color: #247846; font-family: Orbitron;">View Result</a>
+            </div>
 		</div>
 
         <div class="col-md-4 text-center">
@@ -67,7 +70,7 @@
             </h3>
         </div>
     </div>
-    <div class = "row" style="background-color: #393939">
+    <div class = "row" style="background-color: #393939; font-family: Geneva;">
         <div class="col-md-10 col-md-offset-1">
             <table class="table ">
                     <tr class="text-danger">
@@ -98,7 +101,7 @@
                     <tr ng-if="<?php echo $i;?> <= homeCount" class="text-danger" style="font-size:25px;">
                         <div ng-init="OrderTime<?php echo $i;?> = 0">
                             <td class = "text-danger">
-                                <input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?> = <?php echo $i;?>" type="number" style="width: 60px; height: 40px" min="1" max="12"  maxlength="2">
+                                <input id="HomeNumber<?php echo $i;?>" ng-model="HomeNumber<?php echo $i;?>" type="number" style="width: 60px; height: 40px" min="1" max="12"  maxlength="2">
                             </td>
                             <td id="PizzaType<?php echo $i;?>">
                                 <button id="bSmall<?php echo $i;?>" ng-model="PizzaType<?php echo $i;?> = S" onClick="Small(<?php echo $i;?>)" type="button" class="label label-info">S
@@ -488,7 +491,6 @@ $(document).ready(function(){
             if(!data.error){
 				alert("Successfully Saved Status.");
 				$("#save").prop('disabled', true);
-				alert("jhh");
 			}
 			else{
 				alert("Status is not Saved, Check Inputs.");

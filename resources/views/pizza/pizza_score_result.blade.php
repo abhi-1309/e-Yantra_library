@@ -11,7 +11,7 @@
     <div class="row" style="background-color: #393939;">
         <div class="col-md-4">
             <a class="" href="#">
-                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}" style="width:250px; height:50px;">
+                <img alt="e-Yantra" src="{!!asset('img/logo.png')!!}" style="margin-top:10px; width:250px; height:50px;">
             </a>
         </div>
         <div class="col-md-4 text-center">
@@ -25,7 +25,7 @@
         </div>
 
         <div class="col-md-4 text-center" style="margin-top: 50px;">
-			<img src="http://localhost:8999/img/animation/animated_pizza_image_2.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+			<img src="/img/animation/animated_pizza_image_2.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
 		</div>
 
         <div class="col-md-4 text-center">

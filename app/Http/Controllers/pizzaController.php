@@ -22,8 +22,8 @@ class pizzaController extends Controller {
     log::info($dataToSave);
     try
     {
-      if(count($dataToSave) != 20){
-        $homeCount = $dataToSave[18];
+      if(count($dataToSave) == 20){
+        $homeCount = $dataToSave[19];
         for($i=0; $i<$homeCount; $i++){
           $pizzaDeliveryTable = new pizzaDeliveryTable;
 
@@ -40,6 +40,10 @@ class pizzaController extends Controller {
           $pizzaDeliveryTable->tip = $dataToSave[13][$i];
 
           $pizzaDeliveryTable->save();
+          if(!$pizzaDeliveryTable->save()){
+            Log::info('not saved'.$i);
+            throw new Exception("Not Saved");
+          }
         }
 
         $pizzaDeliveryResult = new pizzaDeliveryResult;
@@ -57,11 +61,13 @@ class pizzaController extends Controller {
         $pizzaDeliveryResult->save();
 
         if(!$pizzaDeliveryResult->save()){
+          Log::info('not saved');
           throw new Exception("Not Saved");
         }
         return json_encode('success');
       }
       else{
+          Log::info(count($dataToSave));
           throw new Exception("Inputs are not correct");
       }
     }
