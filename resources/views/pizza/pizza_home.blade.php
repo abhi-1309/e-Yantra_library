@@ -44,6 +44,9 @@
             <div class="row">
             <a href="/pizzaScoreResult" class="btn btn-info" target="blank" style="color: #247846; font-family: Orbitron;">View Result</a>
             </div>
+            <div class="row">
+            <a href="/pizzaScoreDetail" class="btn btn-info" target="blank" style="color: #247846; font-family: Orbitron;">Score Detail</a>
+            </div>
 		</div>
 
         <div class="col-md-4 text-center">

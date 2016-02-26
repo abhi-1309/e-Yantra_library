@@ -20,6 +20,18 @@ class pizzaController extends Controller {
   {
     $dataToSave = Input::get('dataToSave');
     log::info($dataToSave);
+    $teamID =$dataToSave[0]; 
+    $teamTableData = pizzaDeliveryTable::where('team_id', $teamID)->orderBy('run_count', 'DESC')->first();
+    if(count($teamTableData)<1)
+      {
+        $runCountData = 1;
+      }else{
+
+        $runCountData=$teamTableData->run_count;
+        $runCountData=$runCountData+1;
+      }
+
+
     try
     {
       if(count($dataToSave) == 20){
@@ -29,6 +41,7 @@ class pizzaController extends Controller {
             $pizzaDeliveryTable = new pizzaDeliveryTable;
 
             $pizzaDeliveryTable->team_id = $dataToSave[0];
+            $pizzaDeliveryTable->run_count = $runCountData;
             $pizzaDeliveryTable->home_no = $dataToSave[4][$i];
             $pizzaDeliveryTable->pizza_type = $dataToSave[5][$i];
             $pizzaDeliveryTable->order_type = $dataToSave[6][$i];
@@ -50,6 +63,7 @@ class pizzaController extends Controller {
           $pizzaDeliveryResult = new pizzaDeliveryResult;
 
           $pizzaDeliveryResult->team_id = $dataToSave[0];
+          $pizzaDeliveryResult->run_count = $runCountData;
           $pizzaDeliveryResult->total_time = $dataToSave[1];
           $pizzaDeliveryResult->score = $dataToSave[2];
           $pizzaDeliveryResult->count_penalty = $dataToSave[3];
@@ -101,10 +115,32 @@ class pizzaController extends Controller {
 
   public function scoreResultData(){
 
-    $scoreResultData = pizzaDeliveryResult::all();
+    $scoreResultData = pizzaDeliveryResult::orderBy('team_id', 'ASE')->get();
     Log::info($scoreResultData);
     return json_encode($scoreResultData);
   }
+
+  public function ScoreDetail(){
+    return view('pizza.pizza_score_detail');
+  }
+
+  public function scoreDetailData(){
+     Log::info("hello");
+    $TeamId = Input::get('pizzaScoreId');
+
+   
+    
+
+    $TeamDetailData = pizzaDeliveryTable::where('team_id', $TeamId)->get();
+    $TeamDetailResultData = pizzaDeliveryResult::where('team_id', $TeamId)->get();
+    Log::info($TeamDetailData);
+    Log::info($TeamDetailResultData);
+    $TeamFinalData = ['TeamDetailData' => $TeamDetailData, 'TeamDetailResultData' => $TeamDetailResultData];
+    return json_encode($TeamFinalData);
+
+  }
+
+ 
 }
 
 

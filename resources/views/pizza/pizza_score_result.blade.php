@@ -83,6 +83,7 @@ $(document).ready(function(){
 					<tr>\
 					<th data-tsorter="numeric"><h3>ID</h3></th>\
 					<th data-tsorter="numeric"><h3>Team ID</h3></th>\
+                    <th><h3>Run Count</h3></th>\
 					<th><h3>Total Time</h3></th>\
 					<th><h3>Correct Detection</h3></th>\
 					<th><h3>Correct Pizza Detection</h3></th>\
@@ -97,6 +98,7 @@ $(document).ready(function(){
 					trHTML += '<tr>';
 					trHTML += '<td>' + data[i].id + '</td>';
 					trHTML += '<td>' + data[i].team_id + '</td>';
+                    trHTML += '<td>' + data[i].run_count + '</td>';
 					trHTML += '<td>' + data[i].total_time + '</td>';
 					trHTML += '<td>' + data[i].count_cd + '</td>';
 					trHTML += '<td>' + data[i].count_cpd + '</td>';

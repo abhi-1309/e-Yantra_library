@@ -48,6 +48,14 @@ Route::match(array('GET','POST'), '/scoreResultData', array(
 	'as'			=>	'scoreResultData',
 	'uses'			=>	'pizzaController@scoreResultData'
 	));
+Route::match(array('GET'), '/pizzaScoreDetail', array(
+	'as'			=>	'pizzaScoreDetail',
+	'uses'			=>	'pizzaController@ScoreDetail'
+	));
+Route::match(array('GET','POST'), '/pizzaDetailData', array(
+	'as'			=>	'scoreDetailData',
+	'uses'			=>	'pizzaController@scoreDetailData'
+	));
 
 
 
